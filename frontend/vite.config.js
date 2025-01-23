@@ -5,7 +5,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     host: true, // or '0.0.0.0'
-    port: 5173  // default Vite port
+    port: 5173 // default Vite port
   },
-  plugins: [react()]
+  plugins: [react()],
+  build: {
+    rollupOptions: {
+      external: ['react-icons'] // Externalize react-icons
+    }
+  }
 })

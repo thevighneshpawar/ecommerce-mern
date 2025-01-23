@@ -16,7 +16,13 @@ connectDB();
 // MIDDLEWARES
 
 app.use(express.json())
-app.use(cors())
+const corsOptions = {
+    origin: 'https://ecommerce-frontend-jet-one.vercel.app' || 'https://ecommerce-mern-iota-opal.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    credentials: true, // Allow cookies and credentials
+};
+app.use(cors(corsOptions));
 
 
 //api Endpoints

@@ -16,13 +16,29 @@ connectDB();
 // MIDDLEWARES
 
 app.use(express.json())
+const allowedOrigins = [
+    'https://ecommerce-frontend-jet-one.vercel.app',
+    'https://ecommerce-mern-iota-opal.vercel.app',
+];
+
 const corsOptions = {
-    origin: 'https://ecommerce-frontend-jet-one.vercel.app' || 'https://ecommerce-mern-iota-opal.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-    credentials: true, // Allow cookies and credentials
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
+    credentials: true,
 };
+
 app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
+
 
 
 //api Endpoints

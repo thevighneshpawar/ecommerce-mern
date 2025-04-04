@@ -1,8 +1,15 @@
 {
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/"
-      }
-    ]
-  }
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "https://ecommerce-mern-iota-opal.vercel.app/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}

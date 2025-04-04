@@ -90,6 +90,53 @@ const registerUser = async (req, res) => {
 };
 
 
+const getuserdetails = async (req,res)=>{
+
+    try {
+        const {userId} = req.body
+        const user = await userModel.findById(userId)
+        res.json({success:true,name:user.name,email:user.email})
+        
+    } catch (error) {
+        res.json({
+            success:false,
+            msg:error.message
+        })
+        
+    } 
+}
+
+const changePassword = async(req,res)=>{
+    try {
+        const{oldpass,newpass}= req.body;
+        const user = await userModel.findById(userId)
+
+        if(!user){
+            return res.json({success:false,msg:"User does not Exists"})
+        }
+
+        const isMatch = await bcrypt.compare(oldpass,user.password)
+
+        if(isMatch){
+            
+            
+        
+        
+            res.json({success:true,message:"password Updated"})
+        }else{
+            return res.json({success:false,msg:"Password does not match"})
+        }
+
+
+        
+    } catch (error) {
+        console.log(error);
+        
+        return res.json({success:false,msg:error.message})
+    }
+    
+}
+
 const adminLogin = async(req,res)=>{
 
     try {
@@ -113,5 +160,6 @@ const adminLogin = async(req,res)=>{
 export{
     loginUser,
     registerUser,
-    adminLogin
+    adminLogin,
+    getuserdetails
 }

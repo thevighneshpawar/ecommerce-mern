@@ -19,6 +19,8 @@ app.use(express.json())
 const allowedOrigins = [
     'https://ecommerce-frontend-jet-one.vercel.app',
     'https://ecommerce-mern-iota-opal.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:5174'
 ];
 
 const corsOptions = {

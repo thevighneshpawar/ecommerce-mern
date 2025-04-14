@@ -33,7 +33,7 @@ const Footer = () => {
             <h3 className="text-xl font-medium mb-4">GET IN TOUCH</h3>
             <ul className="space-y-1 text-sm">
               <li className="text-gray-600">+1-000-000</li>
-              <li className="text-gray-600">paymentspaytmnotify@gmail.com</li>
+              <li className="text-gray-600">ok@okokokokgmail.com</li>
               <li><Link to="https://instagram.com" className="text-gray-600 hover:text-gray-900">Instagram</Link></li>
             </ul>
           </div>
